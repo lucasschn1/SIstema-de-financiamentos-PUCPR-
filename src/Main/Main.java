@@ -1,4 +1,7 @@
 package Main;
+import Modelo.Apartamento;
+import Modelo.Casa;
+import Modelo.Terreno;
 import Util.InterfaceUsuario;
 import Modelo.Financiamento;
 
@@ -21,57 +24,44 @@ public class Main {
 
         ListaFinanciamentos.add(financiamento1);
 
-        // Financiamento 2
-        double valorImovel2 = iu.pedirValorImovel();
-        int prazofinanciamento2 = iu.pedirPrazofinanciamento();
-        double taxaJuros2 = iu.pedirTaxadeJuros();
+        // Financiamento Casa
+        double valorCasa = iu.pedirValorImovel();
+        int prazoAnos = iu.pedirPrazofinanciamento();
+        double taxaAnualCasa = iu.pedirTaxadeJuros();
 
-        Financiamento financiamento2 = new Financiamento(valorImovel2,prazofinanciamento2,taxaJuros2);
-        financiamento2.calcularPagamentoMensal();
-        financiamento2.calcularTotalDoPagamento();
+        Financiamento casa1 = new Casa(valorCasa, prazoAnos, taxaAnualCasa);
+        casa1.calcularPagamentoMensal();
+        casa1.calcularTotalDoPagamento();
 
-        ListaFinanciamentos.add(financiamento2);
+        ListaFinanciamentos.add(casa1);
 
-        // Financiamento 3
-        double valorImovel3 = iu.pedirValorImovel();
-        int prazoFinanciamento3 = iu.pedirPrazofinanciamento();
-        double taxaJuros3 = iu.pedirTaxadeJuros();
+        // Financiamento Apartamento
+        Financiamento apartamento1 = new Apartamento(100000, 35, 10);
+        ListaFinanciamentos.add(apartamento1);
 
-        Financiamento financiamento3 = new Financiamento(valorImovel3,prazoFinanciamento3,taxaJuros3);
-        financiamento3.calcularPagamentoMensal();
-        financiamento3.calcularPagamentoMensal();
+        // Financiamento Terreno
+        Financiamento terreno1 = new Terreno(100000, 35, 10);
+        ListaFinanciamentos.add(terreno1);
 
-        ListaFinanciamentos.add(financiamento3);
+        // Financiamento teste
+        ListaFinanciamentos.add(new Apartamento(100000, 35, 10));
 
-        // Financiamento 4
-        double valorImovel4 = iu.pedirValorImovel();
-        int prazoFinanciamento4 = iu.pedirPrazofinanciamento();
-        double taxaJuros4 = iu.pedirTaxadeJuros();
-
-        Financiamento financiamento4 = new Financiamento(valorImovel4,prazoFinanciamento4,taxaJuros4);
-        financiamento4.calcularPagamentoMensal();
-        financiamento4.calcularTotalDoPagamento();
-
-        ListaFinanciamentos.add(financiamento4);
 
         // Listar os financiamentos
         int contador = 1;
         double totalImovel = 0;
+        double totalFinanciamento = 0;
         for (Financiamento f: ListaFinanciamentos) {
             System.out.println("===FINANCIAMENTO " + contador + "====");
             f.mostrarFinanciamento();
             contador++;
 
             totalImovel += f.getValorImovel();
+            totalFinanciamento += f.calcularTotalDoPagamento();
         }
 
         System.out.printf("O valor total dos imóveis é R$ %.2f%n", totalImovel);
-
-        // Trasformar em método?
-        double totalFinanciamento = financiamento4.calcularTotalDoPagamento() + financiamento3.calcularTotalDoPagamento() +
-                financiamento2.calcularTotalDoPagamento() + financiamento1.calcularTotalDoPagamento();
-
-        System.out.printf("O total dos financiamentos é R$ %.2f%n ", totalFinanciamento);
+        System.out.printf("O valor total dos financiamentos é R$ %.2f%n", totalFinanciamento);
 
     }
 }
