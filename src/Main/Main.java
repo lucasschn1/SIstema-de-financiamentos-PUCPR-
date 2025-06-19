@@ -19,9 +19,6 @@ public class Main {
         double pedirTaxaAnual1 = iu.pedirTaxadeJuros();
 
         Financiamento financiamento1 = new Financiamento(pedirValorImovel1, pedirPrazoFinanciamento1, pedirTaxaAnual1);
-        financiamento1.calcularPagamentoMensal();
-        financiamento1.calcularTotalDoPagamento();
-
         ListaFinanciamentos.add(financiamento1);
 
         // Financiamento Casa
@@ -30,9 +27,6 @@ public class Main {
         double taxaAnualCasa = iu.pedirTaxadeJuros();
 
         Financiamento casa1 = new Casa(valorCasa, prazoAnos, taxaAnualCasa);
-        casa1.calcularPagamentoMensal();
-        casa1.calcularTotalDoPagamento();
-
         ListaFinanciamentos.add(casa1);
 
         // Financiamento Apartamento
