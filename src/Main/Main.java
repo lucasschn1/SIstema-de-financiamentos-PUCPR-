@@ -13,32 +13,19 @@ public class Main {
         ArrayList<Financiamento> ListaFinanciamentos = new ArrayList<>();
         InterfaceUsuario iu = new InterfaceUsuario();
 
-        // Financiamento 1
-        double pedirValorImovel1 = iu.pedirValorImovel();
-        int pedirPrazoFinanciamento1 = iu.pedirPrazofinanciamento();
-        double pedirTaxaAnual1 = iu.pedirTaxadeJuros();
-
-        Financiamento financiamento1 = new Financiamento(pedirValorImovel1, pedirPrazoFinanciamento1, pedirTaxaAnual1);
-        ListaFinanciamentos.add(financiamento1);
-
         // Financiamento Casa
         double valorCasa = iu.pedirValorImovel();
         int prazoAnos = iu.pedirPrazofinanciamento();
         double taxaAnualCasa = iu.pedirTaxadeJuros();
+        double areaTerreno = iu.pedirAreaDoTerreno();
+        double areaConstruida = iu.pedirAreaConstruida();
 
-        Financiamento casa1 = new Casa(valorCasa, prazoAnos, taxaAnualCasa);
-        ListaFinanciamentos.add(casa1);
+        ListaFinanciamentos.add(new Casa(valorCasa, prazoAnos, taxaAnualCasa, areaConstruida, areaTerreno));
 
-        // Financiamento Apartamento
-        Financiamento apartamento1 = new Apartamento(100000, 35, 10);
-        ListaFinanciamentos.add(apartamento1);
+        ListaFinanciamentos.add(new Terreno(100000, 35, 10,"Residencial"));
 
-        // Financiamento Terreno
-        Financiamento terreno1 = new Terreno(100000, 35, 10);
-        ListaFinanciamentos.add(terreno1);
+        ListaFinanciamentos.add(new Apartamento(100000,35,10,12,2));
 
-        // Financiamento teste
-        ListaFinanciamentos.add(new Apartamento(100000, 35, 10));
 
 
         // Listar os financiamentos

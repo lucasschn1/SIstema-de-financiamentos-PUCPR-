@@ -41,4 +41,28 @@ public class InterfaceUsuario {
             }
         }
     }
+
+    public double pedirAreaDoTerreno() {
+        while (true) {
+            System.out.println("\nDigite em m² a área do terreno: ");
+            double areaTerreno = scanner.nextDouble();
+            if (areaTerreno > 0) {
+                return areaTerreno;
+            } else {
+                System.out.println("Erro: Área do terreno com valor invalido!");
+            }
+        }
+    }
+
+    public double pedirAreaConstruida() {
+        while (true) {
+            System.out.println("\nDigite em m² a área construída: ");
+            double areaConstrida = scanner.nextDouble();
+            if (areaConstrida > 0) {
+                return areaConstrida;
+            } else {
+                System.out.println("Erro: Área construída com valor invalido!");
+            }
+        }
+    }
 }

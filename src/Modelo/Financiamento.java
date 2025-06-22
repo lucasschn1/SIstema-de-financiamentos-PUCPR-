@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Financiamento {
+public abstract class Financiamento {
     // Atributos
     private double valorImovel;
     private int prazoFinanciamento;
@@ -26,23 +26,20 @@ public class Financiamento {
     }
 
     // Métodos
-    public double calcularPagamentoMensal() {
-        return (this.valorImovel / (this.prazoFinanciamento * 12)) * (1 + (this.taxaJurosAnual / 12));
-    }
+    public abstract double calcularPagamentoMensal();
 
     public double calcularTotalDoPagamento() {
         return this.calcularPagamentoMensal() * this.prazoFinanciamento * 12;
     }
 
-    public void mostrarFinanciamento() {
+    public void mostrarFinanciamento(){
         System.out.println("\n-----------------Resumo do Financiamento----------------");
         System.out.printf("Valor do Imóvel: R$ %.2f%n", getValorImovel());
-        System.out.println("Prazo do Financimento em anos: " + getPrazoFinanciamento() + " anos");
+        System.out.println("Prazo do Financimento: " + getPrazoFinanciamento() + " anos");
         System.out.println("Taxa de juros anual: " + getTaxaJurosAnual());
         System.out.println("-------------------Resumo dos pagamentos-------------------");
         System.out.printf("Pagamento mensal: R$ %.2f%n",calcularPagamentoMensal() );
         System.out.printf("Total do pagamento: R$ %.2f%n", calcularTotalDoPagamento());
         System.out.println();
     }
-
 }
