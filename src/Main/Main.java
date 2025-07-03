@@ -13,7 +13,7 @@ public class Main {
         ArrayList<Financiamento> ListaFinanciamentos = new ArrayList<>();
         InterfaceUsuario iu = new InterfaceUsuario();
 
-        // Financiamento Casa
+        // Financiamentos
         double valorCasa = iu.pedirValorImovel();
         int prazoAnos = iu.pedirPrazofinanciamento();
         double taxaAnualCasa = iu.pedirTaxadeJuros();
@@ -34,11 +34,15 @@ public class Main {
         double totalFinanciamento = 0;
         for (Financiamento f: ListaFinanciamentos) {
             System.out.println("===FINANCIAMENTO " + contador + "====");
-            f.mostrarFinanciamento();
+
+            double mensal = f.calcularPagamentoMensal();
+            double total = f.calcularTotalDoPagamento(mensal);
+
+            f.mostrarFinanciamento(mensal, total);
             contador++;
 
             totalImovel += f.getValorImovel();
-            totalFinanciamento += f.calcularTotalDoPagamento();
+            totalFinanciamento += total;
         }
 
         System.out.printf("O valor total dos imóveis é R$ %.2f%n", totalImovel);

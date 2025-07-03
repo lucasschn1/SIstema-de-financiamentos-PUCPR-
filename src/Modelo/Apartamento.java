@@ -27,10 +27,10 @@ public class Apartamento extends Financiamento{
     }
 
     @Override
-    public void mostrarFinanciamento() {
-        System.out.println("\n------Apartamento------");
+    public void mostrarFinanciamento(double mensal, double total) {
+        System.out.println("\n------Detalhes do Apartamento------");
         System.out.println("Número do andar: " + getNumeroAndar());
         System.out.println("Quantidade de vagas na garagem: " + getNumeroVagas() + "\n");
-        super.mostrarFinanciamento();
+        super.mostrarFinanciamento(mensal, total);
     }
 }

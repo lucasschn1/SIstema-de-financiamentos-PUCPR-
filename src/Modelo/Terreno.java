@@ -18,9 +18,9 @@ public class Terreno extends Financiamento{
     }
 
     @Override
-    public void mostrarFinanciamento() {
-        System.out.println("\n------Terreno------");
+    public void mostrarFinanciamento(double mensal, double total) {
+        System.out.println("\n------Detalhes do Terreno------");
         System.out.println("Tipo de zona: " + getTipoDeZona() + "\n");
-        super.mostrarFinanciamento();
+        super.mostrarFinanciamento(mensal,total);
     }
 }
