@@ -62,4 +62,15 @@ public void validarAumentoDeJuros(double valorAcrescimo) throws AumentoMaiorDoQu
         System.out.println("Área contruída: " + getAreaConstruida() +" m²\n");
         super.mostrarFinanciamento(mensal, total);
     }
+
+    @Override
+    public String toString() {
+        String retorno = "";
+        retorno += "Valor do imóvel: " + getValorImovel() + "\n";
+        retorno += "Prazo do financiamento: " + getPrazoFinanciamento() + "\n";
+        retorno += "Taxa de juro anual (%): " + getTaxaJurosAnual() + "\n";
+        retorno += "Área construída em m²: " + getAreaConstruida()+ "\n";
+        retorno += "Área do terreno em m²: " + getAreaTerreno() + "\n";
+        return retorno;
+    }
 }

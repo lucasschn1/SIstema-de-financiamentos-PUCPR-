@@ -1,6 +1,9 @@
 package Modelo;
 
-public abstract class Financiamento {
+import Util.InterfaceUsuario;
+import java.io.Serializable;
+
+public abstract class Financiamento implements Serializable{
     // Atributos
     private double valorImovel;
     private int prazoFinanciamento;
@@ -34,7 +37,6 @@ public abstract class Financiamento {
 
     public void mostrarFinanciamento(double mensal, double total){
 
-
         System.out.println("\n-----------------Resumo do Financiamento----------------");
         System.out.printf("Valor do Imóvel: R$ %.2f%n", getValorImovel());
         System.out.println("Prazo do Financimento: " + getPrazoFinanciamento() + " anos");
@@ -45,4 +47,37 @@ public abstract class Financiamento {
         System.out.printf("Total do pagamento: R$ %.2f%n",total);
         System.out.println();
     }
+
+    public static Financiamento criarFinanciamento(int tipo, InterfaceUsuario iu) {
+        double valor = iu.pedirValorImovel();
+        int prazo = iu.pedirPrazofinanciamento();
+        double taxa = iu.pedirTaxadeJuros();
+
+        switch (tipo) {
+            // Casa
+            case 1: {
+                double areaConstruida = iu.pedirAreaConstruida();
+                double areaTerreno = iu.pedirAreaDoTerreno();
+                return new Casa(valor,prazo,taxa,areaConstruida,areaTerreno);
+            }
+            // Apartamento
+            case 2: {
+                int andar = iu.pedirAndar();
+                int vagas = iu.pedirQuantidadeVagas();
+                return new Apartamento(valor, prazo, taxa, andar,vagas);
+            }
+            // Terreno
+            case 3: {
+                String tipoZona = iu.pedirTipoDeArea();
+                return new Terreno(valor, prazo,taxa,tipoZona);
+            }
+            default: {
+                System.out.println("Tipo inválido");
+                return null;
+            }
+        }
+    }
+
+    @Override
+    public abstract String toString();
 }

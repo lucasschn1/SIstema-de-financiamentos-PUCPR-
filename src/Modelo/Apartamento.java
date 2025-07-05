@@ -33,4 +33,15 @@ public class Apartamento extends Financiamento{
         System.out.println("Quantidade de vagas na garagem: " + getNumeroVagas() + "\n");
         super.mostrarFinanciamento(mensal, total);
     }
+
+    @Override
+    public String toString() {
+        String retorno = "";
+        retorno += "Valor do imóvel: " + getValorImovel() + "\n";
+        retorno += "Prazo do financiamento: " + getPrazoFinanciamento() + "\n";
+        retorno += "Taxa de juro anual (%): " + getTaxaJurosAnual() + "\n";
+        retorno += "Quantidades de vaga na garagem: " + getNumeroVagas() + "\n";
+        retorno += "Número do andar: " + getNumeroAndar() + "\n";
+        return retorno;
+    }
 }

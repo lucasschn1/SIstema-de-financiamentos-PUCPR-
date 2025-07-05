@@ -23,4 +23,14 @@ public class Terreno extends Financiamento{
         System.out.println("Tipo de zona: " + getTipoDeZona() + "\n");
         super.mostrarFinanciamento(mensal,total);
     }
+
+    @Override
+    public String toString() {
+        String retorno = "";
+        retorno += "Valor do imóvel: " + getValorImovel() + "\n";
+        retorno += "Prazo do financiamento: " + getPrazoFinanciamento() + "\n";
+        retorno += "Taxa de juro anual (%): " + getTaxaJurosAnual() + "\n";
+        retorno += "Tipo de zona do terreno: " + getTipoDeZona() + "\n";
+        return retorno;
+    }
 }

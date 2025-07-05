@@ -1,52 +1,58 @@
 package Main;
-import Modelo.Apartamento;
-import Modelo.Casa;
-import Modelo.Terreno;
+
 import Util.InterfaceUsuario;
 import Modelo.Financiamento;
-
 import java.util.ArrayList;
+import java.io.*;
 
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Financiamento> ListaFinanciamentos = new ArrayList<>();
+        ArrayList<Financiamento> listaFinanciamentos = new ArrayList<>();
         InterfaceUsuario iu = new InterfaceUsuario();
 
-        // Financiamentos
-        double valorCasa = iu.pedirValorImovel();
-        int prazoAnos = iu.pedirPrazofinanciamento();
-        double taxaAnualCasa = iu.pedirTaxadeJuros();
-        double areaTerreno = iu.pedirAreaDoTerreno();
-        double areaConstruida = iu.pedirAreaConstruida();
+        String arquivo = "financiamentos.dat";
 
-        ListaFinanciamentos.add(new Casa(valorCasa, prazoAnos, taxaAnualCasa, areaConstruida, areaTerreno));
-
-        ListaFinanciamentos.add(new Terreno(100000, 35, 10,"Residencial"));
-
-        ListaFinanciamentos.add(new Apartamento(100000,35,10,12,2));
-
-
-
-        // Listar os financiamentos
-        int contador = 1;
-        double totalImovel = 0;
-        double totalFinanciamento = 0;
-        for (Financiamento f: ListaFinanciamentos) {
-            System.out.println("===FINANCIAMENTO " + contador + "====");
-
-            double mensal = f.calcularPagamentoMensal();
-            double total = f.calcularTotalDoPagamento(mensal);
-
-            f.mostrarFinanciamento(mensal, total);
-            contador++;
-
-            totalImovel += f.getValorImovel();
-            totalFinanciamento += total;
+        try {
+            iu.iniciarSistem(listaFinanciamentos, iu, arquivo);
+        } catch (Exception e) {
+            System.out.println("Erro ao iniciar o sistema de financiamentos" + e.getMessage());
         }
 
-        System.out.printf("O valor total dos imóveis é R$ %.2f%n", totalImovel);
-        System.out.printf("O valor total dos financiamentos é R$ %.2f%n", totalFinanciamento);
+        // Salvar lista em arquivo
+        try {
+            FileOutputStream fos = new FileOutputStream(arquivo);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(listaFinanciamentos);
+            oos.close();
+            fos.close();
+            System.out.println("Lista salva com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar a lista: " + e.getMessage());
+        }
+
+        // Ler lista do arquivo
+        try {
+            iu.lerListaDoArquivo(arquivo);
+        } catch (Exception e) {
+            System.out.println("Erro ao ler a lista: " + e.getMessage());
+        }
+
+        // Salvar lista de financiamentos em .txt
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("FinanciamentosArquivo.txt", true))){
+            int cont = 1;
+            for (Financiamento f : listaFinanciamentos) {
+                escritor.write("-=-=-=-= Financiamentos" + cont + "-=-=-=-=\n");
+                escritor.write(f.toString());
+                escritor.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar no arquivo .txt: " + e.getMessage());
+        }
+
+        
 
     }
 }
