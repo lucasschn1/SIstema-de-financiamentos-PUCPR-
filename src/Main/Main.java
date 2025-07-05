@@ -1,3 +1,8 @@
+/*
+ATIVIDADE SOMATIVA DE POO - TURMA: 22
+NOME: LUCAS SCHNEIDER CORDEIRO
+ */
+
 package Main;
 
 import Util.InterfaceUsuario;
