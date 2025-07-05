@@ -40,7 +40,7 @@ public class Apartamento extends Financiamento{
         retorno += "Valor do imóvel: " + getValorImovel() + "\n";
         retorno += "Prazo do financiamento: " + getPrazoFinanciamento() + "\n";
         retorno += "Taxa de juro anual (%): " + getTaxaJurosAnual() + "\n";
-        retorno += "Quantidades de vaga na garagem: " + getNumeroVagas() + "\n";
+        retorno += "Quantidades de vagas na garagem: " + getNumeroVagas() + "\n";
         retorno += "Número do andar: " + getNumeroAndar() + "\n";
         return retorno;
     }

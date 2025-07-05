@@ -163,7 +163,7 @@ public class InterfaceUsuario {
 
     }
 
-    public void iniciarSistem(ArrayList<Financiamento> lista, InterfaceUsuario iu, String arquivo) throws Exception {
+    public void iniciarSistema(ArrayList<Financiamento> lista, InterfaceUsuario iu, String arquivo) throws Exception {
         while (true) {
             System.out.println("\nDeseja adicionar um novo financiamento?");
             System.out.println("0 - Não (Sair e salvar)");
