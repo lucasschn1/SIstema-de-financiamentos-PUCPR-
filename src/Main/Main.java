@@ -50,7 +50,7 @@ public class Main {
             try (BufferedWriter escritor = new BufferedWriter(new FileWriter("FinanciamentosArquivo.txt", true))) {
                 int cont = 1;
                 for (Financiamento f : listaFinanciamentos) {
-                    escritor.write("-=-=-=-= Financiamentos 1" + cont + "-=-=-=-=\n");
+                    escritor.write("-=-=-=-= Financiamentos " + cont + "-=-=-=-=\n");
                     escritor.write(f.toString());
                     escritor.newLine();
                 }
