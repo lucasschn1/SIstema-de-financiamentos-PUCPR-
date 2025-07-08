@@ -53,6 +53,7 @@ public class Main {
                     escritor.write("-=-=-=-= Financiamentos " + cont + "-=-=-=-=\n");
                     escritor.write(f.toString());
                     escritor.newLine();
+                    cont++;
                 }
             } catch (IOException e) {
                 System.out.println("Erro ao salvar no arquivo .txt: " + e.getMessage());
